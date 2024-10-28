@@ -9,6 +9,7 @@
 
   <ItemGroup>
     <Folder Include="ManualMigrations\" />
+    <Folder Include="Rollback\" />
   </ItemGroup>
 
 </Project>
