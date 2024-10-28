@@ -10,6 +10,11 @@
   <ItemGroup>
     <Folder Include="ManualMigrations\" />
     <Folder Include="Rollback\" />
+    <None Remove="Rollback\rollback-all.sql" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="Rollback\rollback-all.sql" />
   </ItemGroup>
 
 </Project>
