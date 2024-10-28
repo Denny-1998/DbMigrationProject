@@ -9,4 +9,6 @@ IF OBJECT_ID('dbo.Products', 'U') IS NOT NULL
 IF OBJECT_ID('dbo.Categories', 'U') IS NOT NULL
     DROP TABLE dbo.Categories;
 
+USE master
+
 DROP DATABASE DbMigrationProject01;
