@@ -8,6 +8,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Rollback\rollback-all.sql" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="Rollback\rollback-all.sql" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="ManualMigrations\" />
   </ItemGroup>
 
