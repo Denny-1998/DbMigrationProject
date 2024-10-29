@@ -103,18 +103,20 @@ namespace DbMigrationProject.Migrations
                 {
                     b.Navigation("ProductRatings");
 
-            modelBuilder.Entity("DbMigrationProject.Models.Product", b =>
-                {
-                    b.HasOne("DbMigrationProject.Models.Category", "Category")
-                        .WithMany()
-                        .HasForeignKey("CategoryId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                    modelBuilder.Entity("DbMigrationProject.Models.Product", b =>
+                        {
+                            b.HasOne("DbMigrationProject.Models.Category", "Category")
+                                .WithMany()
+                                .HasForeignKey("CategoryId")
+                                .OnDelete(DeleteBehavior.Cascade)
+                                .IsRequired();
 
-                    b.Navigation("Category");
+                            b.Navigation("Category");
 
+                        });
                 });
 #pragma warning restore 612, 618
+            
         }
     }
 }
