@@ -1,17 +1,16 @@
-﻿using System.Text.Json;
-using System.Text.Json.Nodes;
-using DbMigrationProject.Models;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Newtonsoft.Json;
 
 string json;
 DatabaseCredentials credentials;
 
 try
 {
-json = File.ReadAllText("db_credentials.json");
-credentials = JsonSerializer.Deserialize<DatabaseCredentials>(json);
+    json = File.ReadAllText("db_credentials.json");
+    credentials = JsonConvert.DeserializeObject<DatabaseCredentials>(json);
+
 } 
 catch (Exception ex)
 {
@@ -23,7 +22,7 @@ catch (Exception ex)
 var host = Host.CreateDefaultBuilder()
     .ConfigureServices((context, services) =>
     {
-        var connectionString = $"Server=localhost;Database=DbMigrationProject01;User Id={credentials.Username};Password={credentials.Password};";
+        var connectionString = $"Server=localhost;Database=DbMigrationProject01;User Id={credentials.Username};Password={credentials.Password};TrustServerCertificate=True;";
 
         services.AddDbContext<ProjectDbContext>(options =>
             options.UseSqlServer(connectionString));
