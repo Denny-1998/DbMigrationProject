@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -9,9 +10,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DbMigrationProject.Migrations
 {
     [DbContext(typeof(ProjectDbContext))]
-    partial class ProjectDbContextModelSnapshot : ModelSnapshot
+    [Migration("20241029223152_AddProductCategory")]
+    partial class AddProductCategory
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -62,47 +65,6 @@ namespace DbMigrationProject.Migrations
                     b.ToTable("Products");
                 });
 
-
-            modelBuilder.Entity("DbMigrationProject.Models.ProductRating", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("Comment")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("ProductId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Rating")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ProductId");
-
-                    b.ToTable("ProductRatings");
-                });
-
-            modelBuilder.Entity("DbMigrationProject.Models.ProductRating", b =>
-                {
-                    b.HasOne("DbMigrationProject.Models.Product", "Product")
-                        .WithMany("ProductRatings")
-                        .HasForeignKey("ProductId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Product");
-                });
-
-            modelBuilder.Entity("DbMigrationProject.Models.Product", b =>
-                {
-                    b.Navigation("ProductRatings");
-
             modelBuilder.Entity("DbMigrationProject.Models.Product", b =>
                 {
                     b.HasOne("DbMigrationProject.Models.Category", "Category")
@@ -112,7 +74,6 @@ namespace DbMigrationProject.Migrations
                         .IsRequired();
 
                     b.Navigation("Category");
-
                 });
 #pragma warning restore 612, 618
         }

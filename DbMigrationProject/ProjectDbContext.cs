@@ -8,6 +8,8 @@ public class ProjectDbContext : DbContext
 
     public DbSet<Product> Products { get; set; }
     public DbSet<ProductRating> ProductRatings { get; set; }
+    public DbSet<Category> Categories { get; set; }
+
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<Product>()
