@@ -8,13 +8,16 @@ The Manual migrations can be found int the branch `main-manual` whilst the EF mi
 
 ## Project Setup
 
-### 1. Clone the Repository
+### 1. SQL Server
+An instance of Microsoft SQL Server should be running with the simple SQL Server authentication configured.
+
+### 2. Clone the Repository
 ```bash
 git clone [repository-link]
 cd DbMigrationProject
 ```
 
-### 2. Configure the Database
+### 3. Configure the Database
 Create a "db_credentials.json" file for your database communication with the following schema: 
 ```json
 { 
@@ -23,13 +26,13 @@ Create a "db_credentials.json" file for your database communication with the fol
 }
 ```
 
-### 3. Run Initial Migration
+### 4. Run Initial Migration
 Apply the initial migration to set up the base tables:
 ```bash
 dotnet ef database update --project DbMigrationProject
 ```
 
-### 4. Start the Project
+### 5. Start the Project
 Confirm the database connection by running the project:
 ```bash
 dotnet run
